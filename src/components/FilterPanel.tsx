@@ -35,7 +35,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({ columnId, isOpen, onClose, on
       <div className="filter-row">
         <select
           value={operator}
-          onChange={(e) => setOperator(e.target.value)}
+          onChange={(e) => setOperator(e.target.value as 'equals' | 'contains' | 'notContains' | 'greaterThan' | 'lessThan' | 'isEmpty' | 'isNotEmpty')}
           className="filter-select"
         >
           <option value="equals">等于</option>

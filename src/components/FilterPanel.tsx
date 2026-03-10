@@ -11,7 +11,7 @@ interface FilterPanelProps {
 }
 
 const FilterPanel: React.FC<FilterPanelProps> = ({ columnId, isOpen, onClose, onAddFilter, onRemoveFilter, currentFilter }) => {
-  const [operator, setOperator] = useState(currentFilter?.operator || 'equals');
+  const [operator, setOperator] = useState<'equals' | 'contains' | 'notContains' | 'greaterThan' | 'lessThan' | 'isEmpty' | 'isNotEmpty'>(currentFilter?.operator || 'equals');
   const [value, setValue] = useState(currentFilter?.value || '');
   
   const handleApply = () => {

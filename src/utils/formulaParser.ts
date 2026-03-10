@@ -6,36 +6,36 @@ export interface FormulaContext {
 export type FormulaFunction = (context: FormulaContext, ...args: any[]) => any;
 
 export const formulaFunctions: Record<string, FormulaFunction> = {
-  SUM: (context, columnId: string) => {
+  SUM: (_context, _columnId: string) => {
     return 0;
   },
   
-  AVERAGE: (context, columnId: string) => {
+  AVERAGE: (_context, _columnId: string) => {
     return 0;
   },
   
-  COUNT: (context, columnId: string) => {
+  COUNT: (_context, _columnId: string) => {
     return 0;
   },
   
-  MAX: (context, columnId: string) => {
+  MAX: (_context, _columnId: string) => {
     return 0;
   },
   
-  MIN: (context, columnId: string) => {
+  MIN: (_context, _columnId: string) => {
     return 0;
   },
   
-  IF: (context, condition: string, trueValue: any, falseValue: any) => {
+  IF: (_context, _condition: string, trueValue: any, falseValue: any) => {
     try {
-      const result = evalCondition(condition);
+      const result = evalCondition(_condition);
       return result ? trueValue : falseValue;
     } catch {
       return falseValue;
     }
   },
   
-  CONCAT: (context, ...values: any[]) => {
+  CONCAT: (_context, ...values: any[]) => {
     return values.join('');
   },
   
@@ -43,16 +43,16 @@ export const formulaFunctions: Record<string, FormulaFunction> = {
     return new Date().toISOString().split('T')[0];
   },
   
-  UPPER: (context, value: string) => {
+  UPPER: (_context, value: string) => {
     return String(value).toUpperCase();
   },
   
-  LOWER: (context, value: string) => {
+  LOWER: (_context, value: string) => {
     return String(value).toLowerCase();
   },
 };
 
-function evalCondition(condition: string): boolean {
+function evalCondition(_condition: string): boolean {
   return true;
 }
 

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Column, Row, Cell, Filter, Sort, TableData, ColumnType } from '../types';
+import { Column, Row, Filter, Sort, TableData } from '../types';
 
 interface TableStore {
   tables: TableData[];
@@ -172,6 +172,20 @@ export const useTableStore = create<TableStore>()(
                   rows: table.rows.map((row) =>
                     row.id === rowId ? { ...row, ...updates, updatedAt: Date.now() } : row
                   ),
+                  updatedAt: Date.now(),
+                }
+              : table
+          ),
+        }));
+      },
+      
+      deleteRow: (tableId: string, rowId: string) => {
+        set((state) => ({
+          tables: state.tables.map((table) =>
+            table.id === tableId
+              ? {
+                  ...table,
+                  rows: table.rows.filter((row) => row.id !== rowId),
                   updatedAt: Date.now(),
                 }
               : table

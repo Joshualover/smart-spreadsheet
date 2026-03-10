@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTableStore } from '../store/tableStore';
-import { Column, ColumnType } from '../types';
+import { Column } from '../types';
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 import ColumnMenu from './ColumnMenu';
